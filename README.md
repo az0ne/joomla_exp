@@ -1,6 +1,6 @@
 ﻿##[关于]
 JOOMLA最新代码执行EXP，被人的用着感觉不太对，还是自己动手吧
-## [可被利用的设备]
+## [SHELL]
 ![INDEX](/shell.png)
 ## [EXPLOIT]
 ![INDEX](/run.jpg)
